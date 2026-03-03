@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Star } from "lucide-react";
 import { testimonials } from "@/lib/data";
 
@@ -26,9 +27,11 @@ export default function Testimonials() {
               </div>
               <p className="mb-6 text-gray-700 italic">&#34;{testimonial.content}&#34;</p>
               <div className="flex items-center">
-                <img
+                <Image
                   src={testimonial.avatar || "/placeholder.svg"}
                   alt={testimonial.name}
+                  width={48}
+                  height={48}
                   className="mr-4 h-12 w-12 rounded-full"
                 />
                 <div>

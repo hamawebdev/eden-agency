@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -25,9 +26,11 @@ export default function Hero() {
           </div>
           <div className="relative">
             <div className="aspect-square overflow-hidden rounded-2xl bg-gray-100">
-              <img
+              <Image
                 src="/hero.webp"
                 alt="Hero Product"
+                width={800}
+                height={800}
                 className="h-full w-full object-cover"
               />
             </div>
