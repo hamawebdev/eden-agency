@@ -11,7 +11,7 @@ export default function ForgotPasswordPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { data, errors, isSubmitting, setValue, handleSubmit } = useForm(ForgotPasswordSchema);
 
-  const onSubmit = async (formData: ForgotPasswordForm) => {
+  const onSubmit = async () => {
     // Simulate password reset request
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSubmitted(true);

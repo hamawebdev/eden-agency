@@ -1,6 +1,6 @@
 "use server";
 
-export async function submitOrderToGoogleSheet(orderData: any) {
+export async function submitOrderToGoogleSheet(orderData: unknown) {
     const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
 
     if (!webhookUrl) {

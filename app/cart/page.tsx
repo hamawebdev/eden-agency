@@ -4,6 +4,7 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem, getTotal } = useCartStore();
@@ -30,9 +31,11 @@ export default function CartPage() {
         <div className="divide-y divide-gray-200">
           {items.map((item) => (
             <div key={item.id} className="flex items-center space-x-4 p-6">
-              <img
+              <Image
                 src={item.image || "/placeholder.svg"}
                 alt={item.name}
+                width={80}
+                height={80}
                 className="h-20 w-20 rounded-lg object-cover"
               />
 
