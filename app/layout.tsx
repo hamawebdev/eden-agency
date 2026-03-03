@@ -11,9 +11,24 @@ import { Suspense } from "react";
 const inter = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Modern E-commerce Store",
-  description: "A modern and responsive e-commerce website",
-  generator: "v0.dev"
+  title: "Eden Agency - Software Subscriptions (ChatGPT, Adobe, etc.)",
+  description: "Eden Agency is specialized to sell digital subscriptions like ChatGPT, Adobe, and more at the best prices.",
+  keywords: ["Eden Agency", "digital subscriptions", "ChatGPT subscription", "Adobe subscription", "premium software"],
+  openGraph: {
+    title: "Eden Agency - Digital Software Subscriptions",
+    description: "Eden Agency is specialized to sell digital subscriptions like ChatGPT, Adobe, and more at the best prices.",
+    siteName: "Eden Agency",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Eden Agency - Digital Software Subscriptions",
+    description: "Eden Agency is specialized to sell digital subscriptions like ChatGPT, Adobe, and more at the best prices.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

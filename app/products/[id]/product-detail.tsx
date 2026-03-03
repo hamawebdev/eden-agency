@@ -66,10 +66,10 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
           <div>
             <h1 className="mb-2 text-3xl font-bold text-gray-900">{product.name}</h1>
             <div className="flex items-center space-x-4">
-              <span className="text-3xl font-bold text-gray-900">{product.price.toFixed(2)} DA</span>
+              <span className="text-3xl font-bold text-gray-900">{product.price} DA</span>
               {product.originalPrice && (
                 <span className="text-xl text-gray-500 line-through">
-                  {product.originalPrice.toFixed(2)} DA
+                  {product.originalPrice} DA
                 </span>
               )}
             </div>

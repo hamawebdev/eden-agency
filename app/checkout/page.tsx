@@ -119,7 +119,7 @@ export default function CheckoutPage() {
                         )}
                       </div>
                     </div>
-                    <p className="font-medium shrink-0">{(currentPrice * item.quantity).toFixed(2)} DA</p>
+                    <p className="font-medium shrink-0">{currentPrice * item.quantity} DA</p>
                   </div>
                 );
               })}
@@ -128,7 +128,7 @@ export default function CheckoutPage() {
             <div className="border-t border-gray-200 mt-6 pt-4">
               <div className="flex items-center justify-between text-lg font-bold">
                 <span>Total</span>
-                <span className="text-primary">{finalTotal.toFixed(2)} DA</span>
+                <span className="text-primary">{finalTotal} DA</span>
               </div>
             </div>
 
@@ -194,7 +194,7 @@ export default function CheckoutPage() {
                       >
                         {itemDurations.map((duration, idx) => (
                           <option key={idx} value={idx}>
-                            {duration.label} - {(duration.value).toFixed(2)} DA
+                            {duration.label} - {duration.value} DA
                           </option>
                         ))}
                       </select>
