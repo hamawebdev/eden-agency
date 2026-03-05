@@ -17,9 +17,12 @@ declare global {
 const canTrack = () => typeof window !== "undefined" && typeof window.fbq === "function";
 
 export const pageview = () => {
-    if (canTrack()) {
-        window.fbq("track", "PageView");
-    }
+    if (!canTrack()) return;
+
+    const fbq = window.fbq;
+    if (!fbq) return;
+
+    fbq("track", "PageView");
 };
 
 export const event = (
@@ -29,12 +32,15 @@ export const event = (
 ) => {
     if (!canTrack()) return;
 
+    const fbq = window.fbq;
+    if (!fbq) return;
+
     if (eventId) {
-        window.fbq("track", name, options ?? {}, { eventID: eventId });
+        fbq("track", name, options ?? {}, { eventID: eventId });
         return;
     }
 
-    window.fbq("track", name, options ?? {});
+    fbq("track", name, options ?? {});
 };
 
 const getCookie = (name: string): string | undefined => {
