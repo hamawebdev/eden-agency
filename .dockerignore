@@ -9,6 +9,4 @@ README.md
 .prettierrc
 eslint.config.mjs
 components.json
-postcss.config.mjs
-tsconfig.json
 tsconfig.tsbuildinfo
