@@ -4,11 +4,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import * as fbq from "@/lib/fb-pixel";
 import { useSearchParams } from "next/navigation";
 
-export default function ThankYouPage() {
+function ThankYouPageContent() {
     const trackedPurchase = useRef(false);
     const searchParams = useSearchParams();
 
@@ -90,5 +90,13 @@ export default function ThankYouPage() {
                 </motion.div>
             </motion.div>
         </div>
+    );
+}
+
+export default function ThankYouPage() {
+    return (
+        <Suspense fallback={null}>
+            <ThankYouPageContent />
+        </Suspense>
     );
 }
