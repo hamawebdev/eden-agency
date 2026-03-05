@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
@@ -8,16 +8,51 @@ import ProductCard from "@/components/ProductCard";
 import { Product } from "@/lib/schemas";
 import { useRouter } from "next/navigation";
 import { Reviews1 } from "@/components/reviews1";
+import * as fbq from "@/lib/fb-pixel";
 
 type Props = { product: Product; relatedProducts: Product[] };
 
 export default function ProductDetailPage({ product, relatedProducts }: Props) {
   const router = useRouter();
+  const trackedProductId = useRef<string | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0]);
   const [quantity, setQuantity] = useState(1);
   const clearCart = useCartStore((state) => state.clearCart);
   const addItem = useCartStore((state) => state.addItem);
+
+  useEffect(() => {
+    if (!product?.id || trackedProductId.current === product.id) return;
+
+    const eventId = fbq.generateEventId("viewcontent");
+    const payload = {
+      content_name: product.name,
+      content_ids: [product.id],
+      content_type: "product",
+      value: product.price,
+      currency: "DZD",
+    };
+
+    fbq.event("ViewContent", payload, eventId);
+
+    const browserData = fbq.getMetaBrowserData();
+    void fetch("/api/meta/events", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        eventName: "ViewContent",
+        eventId,
+        eventSourceUrl: window.location.href,
+        customData: payload,
+        userData: browserData,
+      }),
+    }).catch(() => {
+      // Do not block user flow if Meta endpoint fails.
+    });
+
+    trackedProductId.current = product.id;
+  }, [product?.id, product?.name, product?.price]);
 
   if (!product) {
     return (

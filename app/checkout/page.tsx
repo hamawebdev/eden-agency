@@ -10,9 +10,9 @@ import { CheckoutSchema, type CheckoutForm } from "@/lib/schemas";
 import Faq3 from "@/components/mvpblocks/faq-3";
 import { submitOrderToGoogleSheet } from "@/app/actions/checkout";
 import { Reviews1 } from "@/components/reviews1";
+import * as fbq from "@/lib/fb-pixel";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -54,6 +54,9 @@ export default function CheckoutPage() {
   }, 0);
 
   const onSubmit = async (formData: CheckoutForm) => {
+    const purchaseEventId = fbq.generateEventId("purchase");
+    const browserData = fbq.getMetaBrowserData();
+
     // Handle checkout logic here
     const orderData = {
       ...formData,
@@ -74,13 +77,16 @@ export default function CheckoutPage() {
       }),
       totalAmount: finalTotal,
       orderDate: new Date().toISOString(),
+      metaEventId: purchaseEventId,
+      metaEventSourceUrl: window.location.href,
+      metaBrowserData: browserData,
     };
 
     const result = await submitOrderToGoogleSheet(orderData);
 
     if (result.success) {
       clearCart();
-      router.push("/thankyou");
+      router.push(`/thankyou?event_id=${encodeURIComponent(purchaseEventId)}&value=${finalTotal}`);
     } else {
       setIsErrorDialogOpen(true);
     }

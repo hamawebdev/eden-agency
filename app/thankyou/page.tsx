@@ -4,14 +4,28 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import * as fbq from "@/lib/fb-pixel";
+import { useSearchParams } from "next/navigation";
 
 export default function ThankYouPage() {
+    const trackedPurchase = useRef(false);
+    const searchParams = useSearchParams();
+
     useEffect(() => {
-        // Fire Facebook Pixel Purchase event
-        fbq.event("Purchase", { currency: "DA", value: 0.00 }); // Value can be updated dynamically if orders are passed here
-    }, []);
+        if (trackedPurchase.current) return;
+
+        const value = Number(searchParams.get("value") || 0);
+        const eventId = searchParams.get("event_id") || undefined;
+
+        fbq.event(
+            "Purchase",
+            { currency: "DZD", value: Number.isFinite(value) ? value : 0 },
+            eventId
+        );
+
+        trackedPurchase.current = true;
+    }, [searchParams]);
 
     return (
         <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
