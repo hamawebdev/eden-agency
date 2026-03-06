@@ -180,18 +180,6 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
         </div>
       </div>
 
-      {/* Related Products */}
-      {relatedProducts.length > 0 && (
-        <div className="mt-16">
-          <h2 className="mb-8 text-2xl font-bold text-gray-900">{t("products.relatedProducts")}</h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Reviews */}
       <div className="mt-16">
         <Reviews1 />
