@@ -35,6 +35,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const metaParamBuilderScriptUrl = process.env.META_PARAM_BUILDER_SCRIPT_URL;
+
   return (
     <html lang="ar" dir="rtl">
       <head>
@@ -46,7 +48,7 @@ export default function RootLayout({
         <Navbar />
         <FrontextInit />
         <Suspense fallback={null}>
-          <FacebookPixel />
+          <FacebookPixel paramBuilderScriptUrl={metaParamBuilderScriptUrl} />
         </Suspense>
         {children}
         <Footer />

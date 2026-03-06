@@ -5,14 +5,24 @@ import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import * as fbq from "@/lib/fb-pixel";
 
-export default function FacebookPixel() {
+type FacebookPixelProps = {
+    paramBuilderScriptUrl?: string;
+};
+
+export default function FacebookPixel({ paramBuilderScriptUrl }: FacebookPixelProps) {
     const pixelId = fbq.FB_PIXEL_ID;
     const [loaded, setLoaded] = useState(false);
     const trackedInitialPageview = useRef(false);
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const builderScriptUrl =
+        paramBuilderScriptUrl?.trim() || fbq.DEFAULT_META_PARAM_BUILDER_SCRIPT_URL;
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        fbq.processMetaBrowserParams(window.location.href);
+
         if (!loaded) return;
         if (!trackedInitialPageview.current) {
             trackedInitialPageview.current = true;
@@ -27,6 +37,11 @@ export default function FacebookPixel() {
 
     return (
         <div>
+            <Script
+                id="meta-param-builder"
+                strategy="afterInteractive"
+                src={builderScriptUrl}
+            />
             <Script
                 id="fb-pixel"
                 strategy="afterInteractive"
