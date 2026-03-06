@@ -48,7 +48,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Link>
       </div>
 
-      <div className="p-4">
+      <div className="p-6">
         <Link href={`/products/${product.id}`}>
           <h3 className="hover:text-primary mb-2 line-clamp-2 font-semibold text-gray-900 transition-colors">
             {product.name}
@@ -66,7 +66,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
-        <Button onClick={handleAddToCart} className="w-full" size="sm">
+        <Button onClick={handleAddToCart} className="w-full font-extrabold text-lg md:text-base" size="lg">
           شراء
         </Button>
       </div>

@@ -9,11 +9,10 @@ export default function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
             <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl">
-              اكتشف منتجاتنا المميزة
-              <span className="text-primary block">المنتجات</span>
+              اكتشف اشتراكاتنا الرقمية
             </h1>
             <p className="mb-8 max-w-lg text-xl text-gray-600">
-              استمتع بجودة استثنائية وتصميم عصري. تسوق من مجموعتنا المنتقاة من المنتجات المتميزة المصممة لاسلوب الحياة الحديث.
+              استمتع بأقوى الاشتراكات الرقمية مثل خدمات الذكاء الاصطناعي والأدوات الاحترافية مع تفعيل فوري بعد الشراء. تجربة سريعة، آمنة، ومصممة لتمنحك وصولاً مباشراً إلى أفضل الخدمات الرقمية.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href="/products">
