@@ -28,6 +28,31 @@ type MetaSendResult = {
 };
 
 const GRAPH_API_VERSION = process.env.META_GRAPH_API_VERSION || "v20.0";
+const GRAPH_API_BASE_URL = (process.env.META_GRAPH_API_BASE_URL || "https://graph.facebook.com").replace(
+    /\/+$/,
+    ""
+);
+
+const parseNonNegativeInt = (value: string | undefined, fallback: number) => {
+    const parsed = Number.parseInt(value || "", 10);
+    if (!Number.isFinite(parsed) || parsed < 0) return fallback;
+    return parsed;
+};
+
+const REQUEST_TIMEOUT_MS = parseNonNegativeInt(process.env.META_REQUEST_TIMEOUT_MS, 10000);
+const MAX_RETRIES = parseNonNegativeInt(process.env.META_MAX_RETRIES, 2);
+const RETRY_BASE_DELAY_MS = parseNonNegativeInt(process.env.META_RETRY_BASE_DELAY_MS, 350);
+
+const RETRYABLE_ERROR_CODES = new Set([
+    "ETIMEDOUT",
+    "ECONNRESET",
+    "ECONNREFUSED",
+    "EAI_AGAIN",
+    "ENOTFOUND",
+    "UND_ERR_CONNECT_TIMEOUT",
+    "UND_ERR_HEADERS_TIMEOUT",
+    "UND_ERR_SOCKET",
+]);
 
 const normalizeValue = (value: string) => value.trim().toLowerCase();
 const normalizePhone = (value: string) => value.replace(/[^\d]/g, "");
@@ -83,6 +108,32 @@ const buildUserData = (input?: MetaUserDataInput) => {
 export const getClientIpFromHeader = (value?: string | null) =>
     value?.split(",")[0]?.trim() || undefined;
 
+const shouldRetryStatus = (status: number) => status === 429 || status >= 500;
+
+const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+const getErrorCode = (error: unknown): string | undefined => {
+    if (!error || typeof error !== "object") return undefined;
+
+    const directCode = (error as { code?: unknown }).code;
+    if (typeof directCode === "string") return directCode;
+
+    const cause = (error as { cause?: unknown }).cause;
+    if (!cause || typeof cause !== "object") return undefined;
+
+    const causeCode = (cause as { code?: unknown }).code;
+    return typeof causeCode === "string" ? causeCode : undefined;
+};
+
+const isRetryableNetworkError = (error: unknown) => {
+    if (error instanceof DOMException && error.name === "AbortError") {
+        return true;
+    }
+
+    const code = getErrorCode(error);
+    return Boolean(code && RETRYABLE_ERROR_CODES.has(code));
+};
+
 export async function sendMetaEvent(input: MetaEventInput): Promise<MetaSendResult> {
     const { pixelId, accessToken, isValid } = getMetaConfig();
 
@@ -106,30 +157,66 @@ export async function sendMetaEvent(input: MetaEventInput): Promise<MetaSendResu
         test_event_code: process.env.META_TEST_EVENT_CODE,
     });
 
-    const endpoint = `https://graph.facebook.com/${GRAPH_API_VERSION}/${pixelId}/events?access_token=${encodeURIComponent(
+    const endpoint = `${GRAPH_API_BASE_URL}/${GRAPH_API_VERSION}/${pixelId}/events?access_token=${encodeURIComponent(
         accessToken || ""
     )}`;
 
-    try {
-        const response = await fetch(endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            cache: "no-store",
-        });
+    const maxAttempts = MAX_RETRIES + 1;
 
-        if (!response.ok) {
-            const errorText = await response.text();
+    for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+        try {
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+                cache: "no-store",
+                signal: controller.signal,
+            });
+
+            if (response.ok) {
+                return { success: true, status: response.status };
+            }
+
+            const errorText = await response.text().catch(() => "Failed to read Meta CAPI error body");
+            const canRetry = attempt < maxAttempts && shouldRetryStatus(response.status);
+
+            if (canRetry) {
+                const delayMs = RETRY_BASE_DELAY_MS * 2 ** (attempt - 1);
+                console.warn(
+                    `Meta CAPI request failed with status ${response.status} (attempt ${attempt}/${maxAttempts}). Retrying in ${delayMs}ms.`
+                );
+                await wait(delayMs);
+                continue;
+            }
+
             console.error("Meta CAPI request failed:", errorText);
             return { success: false, status: response.status, error: errorText };
-        }
+        } catch (error) {
+            const code = getErrorCode(error);
+            const canRetry = attempt < maxAttempts && isRetryableNetworkError(error);
 
-        return { success: true, status: response.status };
-    } catch (error) {
-        console.error("Meta CAPI request error:", error);
-        return {
-            success: false,
-            error: error instanceof Error ? error.message : "Unknown Meta CAPI error",
-        };
+            if (canRetry) {
+                const delayMs = RETRY_BASE_DELAY_MS * 2 ** (attempt - 1);
+                console.warn(
+                    `Meta CAPI request error ${code ? `(${code}) ` : ""}(attempt ${attempt}/${maxAttempts}). Retrying in ${delayMs}ms.`
+                );
+                await wait(delayMs);
+                continue;
+            }
+
+            console.error("Meta CAPI request error:", error);
+            const errorMessage = error instanceof Error ? error.message : "Unknown Meta CAPI error";
+            return {
+                success: false,
+                error: code ? `${errorMessage} (${code})` : errorMessage,
+            };
+        } finally {
+            clearTimeout(timeoutId);
+        }
     }
+
+    return { success: false, error: "Meta CAPI retries exhausted" };
 }
