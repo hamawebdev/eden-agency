@@ -10,7 +10,8 @@ WORKDIR /app
 # We only copy package files here to cache the npm install step
 COPY package.json package-lock.json* ./
 # install packages. Prisma generate happens in postinstall automatically
-RUN npm ci
+# Use npm install instead of npm ci to tolerate lockfile drift in CI builds.
+RUN npm install --no-audit --no-fund
 
 # Rebuild the source code only when needed
 FROM base AS builder
