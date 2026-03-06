@@ -18,8 +18,6 @@ export default function Navbar() {
           {/* Logo */}
           <Logo />
 
-
-
           {/* Right Side */}
           <div className="flex items-center space-x-4">
             {/* Cart link removed */}
@@ -30,16 +28,16 @@ export default function Navbar() {
                 <Button variant="ghost" size="sm">
                   <User className="h-5 w-5" />
                 </Button>
-                <div className="invisible absolute right-0 mt-2 w-48 rounded-md bg-white py-1 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-0 mt-2 w-48 rounded-md bg-white py-1 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                   <Link
                     href="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Profile
+                    الملف الشخصي
                   </Link>
                   <button
                     onClick={logout}
-                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
-                    Sign Out
+                    className="block w-full px-4 py-2 text-right text-sm text-gray-700 hover:bg-gray-100">
+                    تسجيل الخروج
                   </button>
                 </div>
               </div>
@@ -57,15 +55,15 @@ export default function Navbar() {
           <div className="border-t border-gray-200 py-4 md:hidden">
             <div className="flex flex-col space-y-4">
               <Link href="/" className="hover:text-primary text-gray-700 transition-colors">
-                Home
+                الرئيسية
               </Link>
               <Link href="/products" className="hover:text-primary text-gray-700 transition-colors">
-                Shop
+                المتجر
               </Link>
               <div className="border-t border-gray-200 pt-4">
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="البحث عن منتجات..."
                   className="focus:ring-primary w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-transparent focus:ring-2"
                 />
               </div>

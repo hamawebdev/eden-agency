@@ -9,17 +9,16 @@ export default function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
             <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl">
-              Discover Premium
-              <span className="text-primary block">Products</span>
+              اكتشف منتجاتنا المميزة
+              <span className="text-primary block">المنتجات</span>
             </h1>
             <p className="mb-8 max-w-lg text-xl text-gray-600">
-              Experience exceptional quality and modern design. Shop our curated collection of
-              premium products crafted for the modern lifestyle.
+              استمتع بجودة استثنائية وتصميم عصري. تسوق من مجموعتنا المنتقاة من المنتجات المتميزة المصممة لاسلوب الحياة الحديث.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href="/products">
                 <Button size="lg" className="w-full sm:w-auto">
-                  Shop Now
+                  تسوق الآن
                 </Button>
               </Link>
             </div>
@@ -28,20 +27,20 @@ export default function Hero() {
             <div className="aspect-square overflow-hidden rounded-2xl bg-gray-100">
               <Image
                 src="/hero.webp"
-                alt="Hero Product"
+                alt="منتج مميز"
                 width={800}
                 height={800}
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 rounded-xl bg-white p-6 shadow-lg">
+            <div className="absolute -bottom-6 -right-6 rounded-xl bg-white p-6 shadow-lg">
               <div className="flex items-center space-x-4">
                 <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full">
                   <span className="font-bold text-white">80%</span>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Special Offer</p>
-                  <p className="text-sm text-gray-600">Limited time only</p>
+                  <p className="font-semibold text-gray-900">عرض خاص</p>
+                  <p className="text-sm text-gray-600">لمدة محدودة</p>
                 </div>
               </div>
             </div>

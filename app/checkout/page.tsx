@@ -23,17 +23,17 @@ import {
 
 const DURATION_PRICES: Record<string, { label: string; value: number }[]> = {
   chatgpt: [
-    { label: "1 Month", value: 900 },
-    { label: "3 Months", value: 2000 },
-    { label: "1 Year", value: 7500 },
+    { label: "شهر واحد", value: 900 },
+    { label: "3 أشهر", value: 2000 },
+    { label: "سنة واحدة", value: 7500 },
   ],
   capcut: [
-    { label: "1 Month", value: 900 },
-    { label: "3 Months", value: 2000 },
-    { label: "1 Year", value: 7500 },
+    { label: "شهر واحد", value: 900 },
+    { label: "3 أشهر", value: 2000 },
+    { label: "سنة واحدة", value: 7500 },
   ],
-  adobe: [{ label: "1 Month", value: 1500 }],
-  perplexity: [{ label: "1 Month", value: 1000 }],
+  adobe: [{ label: "شهر واحد", value: 1500 }],
+  perplexity: [{ label: "شهر واحد", value: 1000 }],
 };
 
 export default function CheckoutPage() {
@@ -48,7 +48,7 @@ export default function CheckoutPage() {
   };
 
   const finalTotal = items.reduce((acc, item) => {
-    const itemDurations = DURATION_PRICES[item.id] || [{ label: "1 Month", value: item.price }];
+    const itemDurations = DURATION_PRICES[item.id] || [{ label: "شهر واحد", value: item.price }];
     const selectedDurationIndex = durations[item.id] || 0;
     return acc + itemDurations[selectedDurationIndex].value * item.quantity;
   }, 0);
@@ -61,7 +61,7 @@ export default function CheckoutPage() {
     const orderData = {
       ...formData,
       items: items.map((item) => {
-        const itemDurations = DURATION_PRICES[item.id] || [{ label: "1 Month", value: item.price }];
+        const itemDurations = DURATION_PRICES[item.id] || [{ label: "شهر واحد", value: item.price }];
         const selectedDurationIndex = durations[item.id] || 0;
         const currentPrice = itemDurations[selectedDurationIndex].value;
         const durationLabel = itemDurations.length > 1 ? itemDurations[selectedDurationIndex].label : itemDurations[0].label;
@@ -94,17 +94,17 @@ export default function CheckoutPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="mb-8 text-3xl font-bold text-gray-900">Checkout</h1>
+      <h1 className="mb-8 text-3xl font-bold text-gray-900">الدفع</h1>
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
         {/* Order Summary */}
         <div>
           <div className="sticky top-8 rounded-xl bg-gray-50 p-6">
-            <h2 className="mb-4 text-xl font-semibold text-gray-900">Order Summary</h2>
+            <h2 className="mb-4 text-xl font-semibold text-gray-900">ملخص الطلب</h2>
 
             <div className="mb-6 space-y-4">
               {items.map((item) => {
-                const itemDurations = DURATION_PRICES[item.id] || [{ label: "1 Month", value: item.price }];
+                const itemDurations = DURATION_PRICES[item.id] || [{ label: "شهر واحد", value: item.price }];
                 const selectedDurationIndex = durations[item.id] || 0;
                 const currentPrice = itemDurations[selectedDurationIndex].value;
 
@@ -125,7 +125,7 @@ export default function CheckoutPage() {
                         )}
                       </div>
                     </div>
-                    <p className="font-medium shrink-0">{currentPrice * item.quantity} DA</p>
+                    <p className="font-medium shrink-0">{currentPrice * item.quantity}دينار</p>
                   </div>
                 );
               })}
@@ -133,8 +133,8 @@ export default function CheckoutPage() {
 
             <div className="border-t border-gray-200 mt-6 pt-4">
               <div className="flex items-center justify-between text-lg font-bold">
-                <span>Total</span>
-                <span className="text-primary">{finalTotal} DA</span>
+                <span>الإجمالي</span>
+                <span className="text-primary">{finalTotal}دينار</span>
               </div>
             </div>
 
@@ -152,12 +152,12 @@ export default function CheckoutPage() {
             className="space-y-6">
             {/* Order Information */}
             <div>
-              <h2 className="mb-4 text-xl font-semibold text-gray-900">Order Information</h2>
+              <h2 className="mb-4 text-xl font-semibold text-gray-900">معلومات الطلب</h2>
               <div className="space-y-4">
                 <div>
                   <Input
                     type="email"
-                    placeholder="Email address"
+                    placeholder="البريد الإلكتروني"
                     value={data.email || ""}
                     onChange={(e) => setValue("email", e.target.value)}
                     className={errors.email ? "border-red-500" : ""}
@@ -167,7 +167,7 @@ export default function CheckoutPage() {
                 <div>
                   <Input
                     type="text"
-                    placeholder="Full name"
+                    placeholder="الاسم الكامل"
                     value={data.fullName || ""}
                     onChange={(e) => setValue("fullName", e.target.value)}
                     className={errors.fullName ? "border-red-500" : ""}
@@ -177,7 +177,7 @@ export default function CheckoutPage() {
                 <div>
                   <Input
                     type="tel"
-                    placeholder="Phone number"
+                    placeholder="رقم الهاتف"
                     value={data.phone || ""}
                     onChange={(e) => setValue("phone", e.target.value)}
                     className={errors.phone ? "border-red-500" : ""}
@@ -191,7 +191,7 @@ export default function CheckoutPage() {
                   return (
                     <div key={item.id}>
                       <label className="block text-sm font-medium text-gray-700">
-                        {item.name} - Duration
+                        {item.name} - المدة
                       </label>
                       <select
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 text-sm bg-white"
@@ -200,7 +200,7 @@ export default function CheckoutPage() {
                       >
                         {itemDurations.map((duration, idx) => (
                           <option key={idx} value={idx}>
-                            {duration.label} - {duration.value} DA
+                            {duration.label} - {duration.value}دينار
                           </option>
                         ))}
                       </select>
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
             </div>
 
             <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-              {isSubmitting ? "Processing..." : "Place Order"}
+              {isSubmitting ? "جاري المعالجة..." : "تقديم الطلب"}
             </Button>
           </form>
         </div>
@@ -224,19 +224,18 @@ export default function CheckoutPage() {
       <Dialog open={isErrorDialogOpen} onOpenChange={setIsErrorDialogOpen}>
         <DialogContent showCloseButton={true}>
           <DialogHeader>
-            <DialogTitle>Order Error</DialogTitle>
+            <DialogTitle>خطأ في الطلب</DialogTitle>
             <DialogDescription>
-              There was an error placing your order. Please try again or contact support.
+              حدث خطأ في تقديم طلبك. يرجى المحاولة مرة أخرى أو التواصل مع الدعم.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="outline">Close</Button>
+              <Button variant="outline">إغلاق</Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
-
   );
 }

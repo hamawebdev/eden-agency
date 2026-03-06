@@ -4,70 +4,75 @@ import { ProductSchema, type Product } from "./schemas";
 export const sampleProducts = [
   {
     id: "chatgpt",
-    name: "ChatGPT Plus",
+    name: "chatgpt plus",
     price: 900,
     image: "/products/chatgpt.webp",
     rating: 5.0,
     reviews: 124,
-    category: "AI",
-    badge: "Best Seller",
-    description: "Pricing:\n- 900 DA per month\n- 2000 DA for 3 months\n- 7500 DA for 1 year",
+    category: "الذكاء الاصطناعي",
+    badge: "الأكثر مبيعاً",
+    description: "الأسعار:\n- 900DA شهرياً\n- 2000DA لثلاثة أشهر\n- 7500DA للسنة",
     features: [
-      "100% official ChatGPT Plus subscription",
-      "Access to latest models",
-      "unlimited file upload",
-      "100% safe and guaranteed accounts",
-      "Fast support for easy account activation"
+      "اشتراك رسمي 100% في شات جي بي تي بلس",
+      "التفعيل عبر بريدك الإلكتروني الشخصي",
+      "ضمان كامل طوال فترة الاشتراك",
+      "الوصول لأحدث النماذج",
+      "رفع غير محدود للملفات",
     ]
   },
   {
     id: "capcut",
-    name: "CapCut Pro",
+    name: "capcut pro",
     price: 900,
     image: "/products/capcut.webp",
     rating: 4.8,
     reviews: 89,
-    category: "Editing",
-    description: "Pricing:\n- 900 DA per month\n- 2000 DA for 3 months\n- 7500 DA for 1 year",
+    category: "التحرير",
+    description: "الأسعار:\n- 900DA شهرياً\n- 2000DA لثلاثة أشهر\n- 7500DA للسنة",
     features: [
-      "Full access to all premium tools: ad-free and unlimited",
-      "Advanced filters and effects for high-quality videos",
-      "Exclusive transitions and animations for a professional touch",
-      "Export in 1080p and 4K without watermarks",
-      "Rich music and sound effects library",
-      "Ready-made templates for fast and professional editing",
-      "100GB secure storage for your videos and files",
-      "100% safe and guaranteed accounts",
-      "Fast support for easy account activation"
+      "وصول كامل لجميع الأدوات المميزة: بدون إعلانات وغير محدود",
+      "فلاتر وتأثيرات متقدمة لفيديوهات عالية الجودة",
+      "انتقالات وحركات حصرية لمظهر احترافي",
+      "تصدير بدقة 1080p و 4K بدون علامات مائية",
+      "مكتبة غنية بالموسيقى والمؤثرات الصوتية",
+      "قوالب جاهزة لتحرير سريع واحترافي",
+      "تخزين آمن 100 جيجابايت لفيديوهاتك وملفاتك",
+      "حسابات 100% آمنة ومضمونة",
+      "دعم سريع لتفعيل الحساب بسهولة"
     ]
   },
   {
     id: "adobe",
-    name: "Adobe Creative Cloud",
+    name: "adobe creative cloud",
     price: 1500,
     image: "/products/adobe.webp",
     rating: 4.9,
     reviews: 156,
-    category: "Design",
-    badge: "Popular",
-    description: "Pricing:\n- 1500 DA per month\n\n📌 Note: Also includes Adobe Firefly and Adobe Stock (professional stock photos and content).",
+    category: "التصميم",
+    badge: "شائع",
+    description: "الأسعار:\n- 1500DA شهرياً\n\n📌 ملاحظة: يشمل أيضاً أدوبي فاييرفلي وأدوبي ستوك (صور ومحتوى مخزون احترافي).",
     features: [
-      "100% official Adobe apps",
-      "Activation via your personal email",
-      "Use on two devices (PC / Mac)",
-      "Direct Adobe technical support",
-      "Full warranty for the entire subscription period"
+      "تطبيقات أدوبي الرسمية 100%",
+      "التفعيل عبر بريدك الإلكتروني الشخصي",
+      "الاستخدام على جهازين (PC / Mac)",
+      "دعم تقني مباشر من أدوبي",
+      "ضمان كامل طوال فترة الاشتراك"
     ]
   },
   {
     id: "perplexity",
-    name: "Perplexity Pro",
+    name: "perplexity pro",
     price: 1000,
     image: "/products/perplexity.webp",
     rating: 4.7,
     reviews: 67,
-    category: "AI",
-    description: "Pricing:\n- 1000 DA per month"
+    category: "الذكاء الاصطناعي",
+    description: "الأسعار:\n- 1000DA شهرياً",
+    features: [
+      "اشتراك رسمي 100% في بربليكسيتي",
+      "التفعيل عبر بريدك الإلكتروني الشخصي",
+      "ضمان كامل طوال فترة الاشتراك"
+    ]
   }
 ] as const;
 
@@ -77,19 +82,19 @@ export const products: Product[] = sampleProducts.map((product) => ProductSchema
 // Categories data with inferred types
 export const categories = [
   {
-    name: "AI",
-    href: "/products?category=AI",
-    count: "2 products"
+    name: "الذكاء الاصطناعي",
+    href: "/products?category=الذكاء_الاصطناعي",
+    count: "منتجان"
   },
   {
-    name: "Editing",
-    href: "/products?category=Editing",
-    count: "1 product"
+    name: "التحرير",
+    href: "/products?category=التحرير",
+    count: "منتج واحد"
   },
   {
-    name: "Design",
-    href: "/products?category=Design",
-    count: "1 product"
+    name: "التصميم",
+    href: "/products?category=التصميم",
+    count: "منتج واحد"
   }
 ] as const;
 
@@ -97,28 +102,25 @@ export const categories = [
 export const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "Designer",
-    content:
-      "Amazing quality products and exceptional customer service. I've been shopping here for over a year and never been disappointed.",
+    name: "سيف الدين",
+    role: "مالك موثق",
+    content: "أنا بطبيعتي دائماً إنسان ما نديرش الثقة في من جاء . بس أيدين يخلوك تثق فيهم بالسلاح من المعاملة الطيبة وسرعة الرد والضمانات وكل شيء . هذي مش أول مرة نتعامل معهم وبإذن الله مش الأخيرة وراح نرشحهم لكل واحد يحوس على الخدمات اللي يقدمونها . بالتوفيق",
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60"
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Developer",
-    content:
-      "Fast shipping, great prices, and the products always exceed my expectations. Highly recommend this store to everyone.",
+    name: "Mirai che",
+    role: "مالك موثق",
+    content: "-استجابة سريعة\n-سعر جيد\n-سهل تطبيق الاشتراك\n-المنتج كما وصفه البائع (بدون إعلانات مضللة)\n\nالثقة مستحقة",
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60"
   },
   {
     id: 3,
-    name: "Emily Davis",
-    role: "Marketing Manager",
-    content:
-      "The attention to detail in both products and packaging is incredible. This is my go-to store for premium tech accessories.",
+    name: "Dawn Design",
+    role: "مالك موثق",
+    content: "أشخاص مثاليون للعمل . شباب صادقون وموثوقون . حظاً سعيداً",
     rating: 5,
     avatar: "/placeholder.svg?height=60&width=60"
   }

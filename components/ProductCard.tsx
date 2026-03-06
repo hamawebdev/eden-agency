@@ -32,11 +32,11 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="group overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg">
       <div className="relative aspect-square overflow-hidden">
         {product.badge && (
-          <span className="bg-primary absolute top-3 left-3 z-10 rounded-full px-2 py-1 text-xs font-medium text-white">
+          <span className="bg-primary absolute top-3 start-3 z-10 rounded-full px-2 py-1 text-xs font-medium text-white">
             {product.badge}
           </span>
         )}
-        <button className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white opacity-0 transition-opacity group-hover:opacity-100">
+        <button className="absolute top-3 end-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white opacity-0 transition-opacity group-hover:opacity-100">
           <Heart className="h-4 w-4 text-gray-600" />
         </button>
         <Link href={`/products/${product.id}`}>
@@ -67,7 +67,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <Button onClick={handleAddToCart} className="w-full" size="sm">
-          Buy
+          شراء
         </Button>
       </div>
     </div>

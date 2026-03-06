@@ -12,12 +12,12 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        <h1 className="mb-4 text-3xl font-bold text-gray-900">Your Cart is Empty</h1>
+        <h1 className="mb-4 text-3xl font-bold text-gray-900">سلتك فارغة</h1>
         <p className="text-muted-foreground mb-8">
-          Looks like you haven&#39;t added anything to your cart yet.
+          يبدو أنك لم تقم بإضافة أي شيء إلى سلتك بعد.
         </p>
         <Link href="/products">
-          <Button size="lg">Continue Shopping</Button>
+          <Button size="lg">متابعة التسوق</Button>
         </Link>
       </div>
     );
@@ -25,7 +25,7 @@ export default function CartPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="mb-8 text-3xl font-bold text-gray-900">Shopping Cart</h1>
+      <h1 className="mb-8 text-3xl font-bold text-gray-900">سلة التسوق</h1>
 
       <div className="overflow-hidden rounded-xl bg-white shadow-sm">
         <div className="divide-y divide-gray-200">
@@ -41,7 +41,7 @@ export default function CartPage() {
 
               <div className="flex-1">
                 <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                <p className="text-muted-foreground">{item.price} DA</p>
+                <p className="text-muted-foreground">{item.price} دينار</p>
               </div>
 
               <div className="flex items-center space-x-3">
@@ -58,9 +58,9 @@ export default function CartPage() {
                 </button>
               </div>
 
-              <div className="text-right">
+              <div className="text-left">
                 <p className="font-semibold text-gray-900">
-                  {item.price * item.quantity} DA
+                  {item.price * item.quantity} دينار
                 </p>
               </div>
 
@@ -75,19 +75,19 @@ export default function CartPage() {
 
         <div className="bg-gray-50 p-6">
           <div className="mb-4 flex items-center justify-between">
-            <span className="text-lg font-semibold">Total:</span>
-            <span className="text-primary text-2xl font-bold">{getTotal()} DA</span>
+            <span className="text-lg font-semibold">الإجمالي:</span>
+            <span className="text-primary text-2xl font-bold">{getTotal()} دينار</span>
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link href="/products" className="flex-1">
               <Button variant="outline" className="w-full bg-transparent">
-                Continue Shopping
+                متابعة التسوق
               </Button>
             </Link>
             <Link href="/checkout" className="flex-1">
               <Button className="w-full" size="lg">
-                Proceed to Checkout
+               المتابعة للدفع
               </Button>
             </Link>
           </div>

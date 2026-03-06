@@ -9,25 +9,25 @@ export default function Footer() {
       name: 'Facebook',
       icon: Facebook,
       href: 'https://web.facebook.com/profile.php?id=61585827034060',
-      label: 'Facebook'
+      label: 'فيسبوك'
     },
     {
       name: 'Instagram',
       icon: Instagram,
       href: 'https://www.instagram.com/eden.agency.dz/',
-      label: 'Instagram'
+      label: 'إنستغرام'
     },
     {
       name: 'Youtube',
       icon: Youtube,
       href: '#',
-      label: 'Youtube'
+      label: 'يوتيوب'
     },
     {
       name: 'Email',
       icon: Mail,
       href: 'mailto:edenagencydz@gmail.com',
-      label: 'Email'
+      label: 'البريد الإلكتروني'
     }
   ];
 
@@ -48,7 +48,6 @@ export default function Footer() {
                   <IconComponent
                     className="w-7 h-7 text-primary"
                     strokeWidth={1.5}
-                    // Adding a subtle fill to mimic the Solar "duotone" look
                     fill="currentColor"
                     fillOpacity={0.15}
                   />
@@ -64,7 +63,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-sm text-white/80">
-            All rights reserved © {currentYear} Eden Agency
+            جميع الحقوق محفوظة © {currentYear} إيدن أجنسي
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { products } from "@/lib/data";
 import ProductDetailPage from "@/app/products/[id]/product-detail";
+import { t } from "@/lib/i18n";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -11,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   if (!product) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        Product not found
+        {t("common.productNotFound")}
       </div>
     );
   }

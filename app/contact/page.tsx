@@ -9,13 +9,31 @@ import { ContactSchema, type ContactForm } from "@/lib/schemas";
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const { data, errors, isSubmitting, setValue, handleSubmit } = useForm(ContactSchema);
 
   const onSubmit = async (formData: ContactForm) => {
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Contact form submitted:", formData);
-    setIsSubmitted(true);
+    setSubmitError(null);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setSubmitError("تعذر إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.");
+    }
   };
 
   if (isSubmitted) {
@@ -25,15 +43,15 @@ export default function ContactPage() {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
             <Send className="h-8 w-8 text-green-600" />
           </div>
-          <h2 className="mb-2 text-2xl font-bold text-green-800">Message Sent Successfully!</h2>
+          <h2 className="mb-2 text-2xl font-bold text-green-800">تم إرسال الرسالة بنجاح!</h2>
           <p className="mb-4 text-green-700">
-            Thank you for contacting us. We&#39;ll get back to you within 24 hours.
+            شكراً لتواصل معنا. سنتواصل معك خلال دقائق
           </p>
           <Button
             onClick={() => setIsSubmitted(false)}
             variant="outline"
             className="bg-transparent">
-            Send Another Message
+            إرسال رسالة أخرى
           </Button>
         </div>
       </div>
@@ -43,10 +61,9 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-gray-900">Contact Us</h1>
+        <h1 className="mb-4 text-4xl font-bold text-gray-900">اتصل بنا</h1>
         <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-          We&#39;d love to hear from you. Send us a message and we&#39;ll respond as soon as
-          possible.
+          نود أن نسمع منك. أرسل لنا رسالة وسنرد في أقرب وقت ممكن.
         </p>
       </div>
 
@@ -54,7 +71,7 @@ export default function ContactPage() {
         {/* Contact Form */}
         <div className="lg:col-span-1">
           <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-            <h2 className="mb-6 text-2xl font-semibold text-gray-900">Send us a Message</h2>
+            <h2 className="mb-6 text-2xl font-semibold text-gray-900">أرسل لنا رسالة</h2>
 
             <form
               onSubmit={(e) => {
@@ -67,12 +84,12 @@ export default function ContactPage() {
                   <label
                     htmlFor="firstName"
                     className="mb-2 block text-sm font-medium text-gray-700">
-                    First Name *
+                    الاسم الأول *
                   </label>
                   <Input
                     id="firstName"
                     type="text"
-                    placeholder="John"
+                    placeholder="أحمد"
                     value={data.firstName || ""}
                     onChange={(e) => setValue("firstName", e.target.value)}
                     className={errors.firstName ? "border-red-500" : ""}
@@ -86,12 +103,12 @@ export default function ContactPage() {
                   <label
                     htmlFor="lastName"
                     className="mb-2 block text-sm font-medium text-gray-700">
-                    Last Name *
+                    اسم العائلة *
                   </label>
                   <Input
                     id="lastName"
                     type="text"
-                    placeholder="Doe"
+                    placeholder="محمد"
                     value={data.lastName || ""}
                     onChange={(e) => setValue("lastName", e.target.value)}
                     className={errors.lastName ? "border-red-500" : ""}
@@ -105,12 +122,12 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700">
-                    Email Address *
+                    البريد الإلكتروني *
                   </label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="ahmed@example.com"
                     value={data.email || ""}
                     onChange={(e) => setValue("email", e.target.value)}
                     className={errors.email ? "border-red-500" : ""}
@@ -120,12 +137,12 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-700">
-                    Phone Number
+                    رقم الهاتف
                   </label>
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="(555) 123-4567"
+                    placeholder="05xx xxx xxxx"
                     value={data.phone || ""}
                     onChange={(e) => setValue("phone", e.target.value)}
                   />
@@ -134,12 +151,12 @@ export default function ContactPage() {
 
               <div>
                 <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
-                  Message *
+                  الرسالة *
                 </label>
                 <textarea
                   id="message"
                   rows={6}
-                  placeholder="Please describe your inquiry in detail..."
+                  placeholder="يرجى وصف استفسارك بالتفصيل..."
                   value={data.message || ""}
                   onChange={(e) => setValue("message", e.target.value)}
                   className={`focus:ring-primary w-full resize-none rounded-lg border px-3 py-2 focus:border-transparent focus:ring-2 ${errors.message ? "border-red-500" : "border-gray-300"
@@ -148,8 +165,14 @@ export default function ContactPage() {
                 {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
               </div>
 
+              {submitError && (
+                <div className="rounded-md bg-red-50 p-3">
+                  <p className="text-sm text-red-600">{submitError}</p>
+                </div>
+              )}
+
               <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "جاري الإرسال..." : "إرسال الرسالة"}
               </Button>
             </form>
           </div>

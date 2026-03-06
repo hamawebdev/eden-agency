@@ -23,12 +23,12 @@ export default function SignInPage() {
       <div className="w-full max-w-md space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
-            Sign in to your account
+            تسجيل الدخول
           </h2>
           <p className="text-muted-foreground mt-2 text-center text-sm">
-            Or{" "}
+            أو{" "}
             <Link href="/auth/signup" className="text-primary hover:text-primary/80 font-medium">
-              create a new account
+              إنشاء حساب جديد
             </Link>
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function SignInPage() {
             <div>
               <Input
                 type="email"
-                placeholder="Email address"
+                placeholder="البريد الإلكتروني"
                 value={data.email || ""}
                 onChange={(e) => setValue("email", e.target.value)}
                 className={errors.email ? "border-red-500" : ""}
@@ -54,7 +54,7 @@ export default function SignInPage() {
             <div>
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder="كلمة المرور"
                 value={data.password || ""}
                 onChange={(e) => setValue("password", e.target.value)}
                 className={errors.password ? "border-red-500" : ""}
@@ -71,8 +71,8 @@ export default function SignInPage() {
                 type="checkbox"
                 className="text-primary focus:ring-primary h-4 w-4 rounded border-gray-300"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                Remember me
+              <label htmlFor="remember-me" className="mr-2 block text-sm text-gray-900">
+                تذكرني
               </label>
             </div>
 
@@ -80,13 +80,13 @@ export default function SignInPage() {
               <Link
                 href="/auth/forgot-password"
                 className="text-primary hover:text-primary/80 font-medium">
-                Forgot your password?
+                هل نسيت كلمة المرور؟
               </Link>
             </div>
           </div>
 
           <Button type="submit" className="w-full" size="lg" disabled={isSubmitting || isLoading}>
-            {isSubmitting || isLoading ? "Signing in..." : "Sign in"}
+            {isSubmitting || isLoading ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
           </Button>
         </form>
       </div>

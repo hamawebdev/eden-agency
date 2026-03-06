@@ -2,191 +2,165 @@ export default function TermsOfServicePage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="prose prose-gray max-w-none">
-        <h1 className="mb-8 text-4xl font-bold text-gray-900">Terms of Service</h1>
+        <h1 className="mb-8 text-4xl font-bold text-gray-900">شروط الخدمة</h1>
         <p className="text-muted-foreground mb-8 text-lg">
-          Last updated: {new Date().toLocaleDateString()}
+          آخر تحديث: {new Date().toLocaleDateString('ar-SA')}
         </p>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">1. Acceptance of Terms</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">1. قبول الشروط</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              By accessing and using this website, you accept and agree to be bound by the terms and
-              provision of this agreement. If you do not agree to abide by the above, please do not
-              use this service.
+              بوصولك واستخدامك لهذا الموقع، فأنت تقبل وتوافق على الالتزام بشروط وأحكام هذا الاتفاق. إذا كنت لا توافق على الالتزام بما سبق، يرجى عدم استخدام هذه الخدمة.
             </p>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">2. Use License</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">2. استخدام الترخيص</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              Permission is granted to temporarily download one copy of the materials on Store&#39;s
-              website for personal, non-commercial transitory viewing only. This is the grant of a
-              license, not a transfer of title, and under this license you may not:
+              يُمنح الإذن لتنزيل نسخة واحدة مؤقتاً من المواد على موقع المتجر للعرض الشخصي غير التجاري فقط. هذا هو منح ترخيص وليس نقل الملكية، ولا يجوز لك بموجب هذا الترخيص:
             </p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>Modify or copy the materials</li>
-              <li>Use the materials for any commercial purpose or for any public display</li>
-              <li>Attempt to reverse engineer any software contained on the website</li>
-              <li>Remove any copyright or other proprietary notations from the materials</li>
+            <ul className="list-disc space-y-2 pr-6">
+              <li>تعديل أو نسخ المواد</li>
+              <li>استخدام المواد لأي غرض تجاعي أو لأي عرض عام</li>
+              <li>محاولة逆向工程 أي برنامج موجود على الموقع</li>
+              <li>إزالة أي حقوق نشر أو ملاحظات ملكية أخرى من المواد</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">3. Product Information</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">3. معلومات المنتج</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              We strive to provide accurate product information, including descriptions, prices, and
-              availability. However:
+              نسعى لتوفير معلومات دقيقة عن المنتجات، بما في ذلك الأوصاف والأسعار والتوفر. ومع ذلك:
             </p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>Product colors may vary due to monitor settings</li>
-              <li>We reserve the right to correct any errors in pricing or product information</li>
-              <li>Product availability is subject to change without notice</li>
-              <li>We may limit quantities available for purchase</li>
+            <ul className="list-disc space-y-2 pr-6">
+              <li>قد تختلف ألوان المنتجات بسبب إعدادات الشاشة</li>
+              <li>نحتفظ بالحق في تصحيح أي أخطاء في التسعير أو معلومات المنتج</li>
+              <li>تخضع حالة التوفر للتغيير دون إشعار مسبق</li>
+              <li>قد نحدد الكميات المتاحة للشراء</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">4. Orders and Payment</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">4. الطلبات والدفع</h2>
           <div className="space-y-4 text-gray-700">
-            <h3 className="text-xl font-medium text-gray-900">Order Acceptance</h3>
+            <h3 className="text-xl font-medium text-gray-900">قبول الطلب</h3>
             <p>
-              All orders are subject to acceptance by us. We reserve the right to refuse or cancel
-              any order for any reason, including but not limited to product availability, errors in
-              product or pricing information, or suspected fraudulent activity.
+              جميع الطلبات تخضع للقبول من جانبنا. نحتفظ بالحق في رفض أو إلغاء أي طلب لأي سبب، بما في ذلك على سبيل المثال لا الحصر التوفر المنتج أو أخطاء معلومات المنتج أو التسعير أو النشاط المشبوه.
             </p>
 
-            <h3 className="mt-6 text-xl font-medium text-gray-900">Payment Terms</h3>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>Payment is due at the time of order</li>
-              <li>We accept major credit cards and PayPal</li>
-              <li>All prices are in USD unless otherwise specified</li>
-              <li>You are responsible for any applicable taxes</li>
+            <h3 className="mt-6 text-xl font-medium text-gray-900">شروط الدفع</h3>
+            <ul className="list-disc space-y-2 pr-6">
+              <li>الدفع مستحق وقت الطلب</li>
+              <li>نقبل بطاقات الائتمان الرئيسية و PayPal</li>
+              <li>جميع الأسعار بالعملة المحلية ما لم يُحدد خلاف ذلك</li>
+              <li>أنت مسؤول عن أي ضرائب applicable</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">5. Shipping and Delivery</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">5. الشحن والتسليم</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              Shipping times and costs vary based on your location and selected shipping method. We
-              are not responsible for delays caused by shipping carriers or customs processing.
+              تختلف أوقات الشحن والتكاليف حسب موقعك وطريقة الشحن المختارة. نحن لسنا مسؤولين عن التأخيرات الناجمة عن شركات الشحن أو معالجة الجمارك.
             </p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>Standard shipping: 5-7 business days</li>
-              <li>Express shipping: 2-3 business days</li>
-              <li>Overnight shipping: 1 business day</li>
-              <li>International shipping: 7-21 business days</li>
+            <ul className="list-disc space-y-2 pr-6">
+              <li>الشحن القياسي: 5-7 أيام عمل</li>
+              <li>الشحن السريع: 2-3 أيام عمل</li>
+              <li>شحن ليلة واحدة: يوم عمل واحد</li>
+              <li>الشحن الدولي: 7-21 أيام عمل</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">6. Returns and Refunds</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">6. الإرجاع والاسترداد</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              Please see our{" "}
+              يرجى الاطلاع على{" "}
               <a href="/returns" className="text-primary hover:underline">
-                Returns Policy
+                سياسة الإرجاع
               </a>{" "}
-              for detailed information about returns, exchanges, and refunds.
+              للحصول على معلومات مفصلة حول الإرجاع والاستبدال والاسترداد.
             </p>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">7. User Accounts</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">7. حسابات المستخدمين</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              When you create an account with us, you must provide accurate and complete
-              information. You are responsible for:
+              عند إنشاء حساب لدينا، يجب عليك تقديم معلومات دقيقة وكاملة. أنت مسؤول عن:
             </p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>Maintaining the confidentiality of your account credentials</li>
-              <li>All activities that occur under your account</li>
-              <li>Notifying us immediately of any unauthorized use</li>
-              <li>Ensuring your account information remains current</li>
+            <ul className="list-disc space-y-2 pr-6">
+              <li>الحفاظ على سرية بيانات اعتماد حسابك</li>
+              <li>جميع الأنشطة التي تحدث تحت حسابك</li>
+              <li>إخطارنا فوراً بأي استخدام غير مصرح به</li>
+              <li>التأكد من أن معلومات حسابك محدثة</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">8. Prohibited Uses</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">8. الاستخدامات المحظورة</h2>
           <div className="space-y-4 text-gray-700">
-            <p>You may not use our service:</p>
-            <ul className="list-disc space-y-2 pl-6">
-              <li>For any unlawful purpose or to solicit others to perform unlawful acts</li>
-              <li>
-                To violate any international, federal, provincial, or state regulations, rules,
-                laws, or local ordinances
-              </li>
-              <li>
-                To infringe upon or violate our intellectual property rights or the intellectual
-                property rights of others
-              </li>
-              <li>
-                To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or
-                discriminate
-              </li>
-              <li>To submit false or misleading information</li>
+            <p>لا يجوز لك استخدام خدماتنا:</p>
+            <ul className="list-disc space-y-2 pr-6">
+              <li>لأي غرض غير قانوني أو لتحريض الآخرين على أداء أفعال غير قانونية</li>
+              <li>لخرق أي لوائح أو قوانين دولية أو اتحادية أو محلية</li>
+              <li>لالتهاك على حقوق الملكية الفكرية الخاصة بنا أو حقوق الآخرين</li>
+              <li>لمضايقة أو إساءة أو إهانة أو تشهير أو تمييز أو تخويف</li>
+              <li>لتقديم معلومات خاطئة أو مضللة</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">9. Limitation of Liability</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">9. تحديد المسؤولية</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              In no event shall Store or its suppliers be liable for any damages (including, without
-              limitation, damages for loss of data or profit, or due to business interruption)
-              arising out of the use or inability to use the materials on Store&#39;s website, even
-              if Store or a Store authorized representative has been notified orally or in writing
-              of the possibility of such damage.
+              لا يتحمل المتجر أو موردوه بأي حال من الأحوال المسؤولية عن أي أضرار (بما في ذلك على سبيل المثال لا الحصر أضرار فقدان البيانات أو الربح أو انقطاع الأعمال) الناشئة عن استخدام أو عدم القدرة على استخدام المواد على موقع المتجر، حتى لو تم إخطار المتجر أو ممثله المعتمد بإمكانية حدوث such damage.
             </p>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">10. Governing Law</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">10. القانون الحاكم</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              These terms and conditions are governed by and construed in accordance with the laws
-              of [Your State/Country] and you irrevocably submit to the exclusive jurisdiction of
-              the courts in that state or location.
+              تخضع هذه الشروط والأحكام وتفسر وفقاً لقوانين الدولة وتخضع حصرياً لاختصاص المحاكم في تلك الدولة أو الموقع.
             </p>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">11. Changes to Terms</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">11. تغييرات الشروط</h2>
           <div className="space-y-4 text-gray-700">
             <p>
-              We reserve the right to revise these terms of service at any time without notice. By
-              using this website, you are agreeing to be bound by the then current version of these
-              terms of service.
+              نحتفظ بالحق في مراجعة شروط الخدمة هذه في أي وقت دون إشعار. باستخدامك لهذا الموقع، فأنت توافق على الالتزام بالإصدار الحالي من شروط الخدمة.
             </p>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900">12. Contact Information</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-gray-900">12. معلومات الاتصال</h2>
           <div className="space-y-4 text-gray-700">
-            <p>If you have any questions about these Terms of Service, please contact us:</p>
+            <p>إذا كانت لديك أي أسئلة حول شروط الخدمة هذه، يرجى التواصل معنا:</p>
             <div className="rounded-lg bg-gray-50 p-6">
               <p>
-                <strong>Email:</strong> legal@store.com
+                <strong>البريد الإلكتروني:</strong> legal@store.com
               </p>
               <p>
-                <strong>Phone:</strong> 1-800-STORE-01
+                <strong>الهاتف:</strong> 1-800-STORE-01
               </p>
               <p>
-                <strong>Address:</strong> 123 Commerce Street, Business City, BC 12345
+                <strong>العنوان:</strong> 123 شارع التجارة، مدينة الأعمال، BC 12345
               </p>
             </div>
           </div>

@@ -1,4 +1,3 @@
-import type React from "react";
 import type { Metadata } from "next";
 import { FrontextInit } from "@/components/frontext-init";
 import { Geist } from "next/font/google";
@@ -11,19 +10,19 @@ import { Suspense } from "react";
 const inter = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Eden Agency - Software Subscriptions (ChatGPT, Adobe, etc.)",
-  description: "Eden Agency is specialized to sell digital subscriptions like ChatGPT, Adobe, and more at the best prices.",
-  keywords: ["Eden Agency", "digital subscriptions", "ChatGPT subscription", "Adobe subscription", "premium software"],
+  title: "إيدن أجنسي - اشتراكات البرمجيات (شاتGBT، أدوبي، وغيرها)",
+  description: "إيدن أجنسي متخصصة في بيع الاشتراكات الرقمية مثل شاتGBT، أدوبي، والمزيد بأفضل الأسعار.",
+  keywords: ["إيدن أجنسي", "اشتراكات رقمية", "اشتراك شاتGBT", "اشتراك أدوبي", "برمجيات مميزة"],
   openGraph: {
-    title: "Eden Agency - Digital Software Subscriptions",
-    description: "Eden Agency is specialized to sell digital subscriptions like ChatGPT, Adobe, and more at the best prices.",
-    siteName: "Eden Agency",
+    title: "إيدن أجنسي - اشتراكات البرمجيات الرقمية",
+    description: "إيدن أجنسي متخصصة في بيع الاشتراكات الرقمية مثل شاتGBT، أدوبي، والمزيد بأفضل الأسعار.",
+    siteName: "إيدن أجنسي",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eden Agency - Digital Software Subscriptions",
-    description: "Eden Agency is specialized to sell digital subscriptions like ChatGPT, Adobe, and more at the best prices.",
+    title: "إيدن أجنسي - اشتراكات البرمجيات الرقمية",
+    description: "إيدن أجنسي متخصصة في بيع الاشتراكات الرقمية مثل شاتGBT، أدوبي، والمزيد بأفضل الأسعار.",
   },
   robots: {
     index: true,
@@ -31,9 +30,13 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
+    <html lang="ar" dir="rtl">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

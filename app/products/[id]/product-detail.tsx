@@ -9,6 +9,7 @@ import { Product } from "@/lib/schemas";
 import { useRouter } from "next/navigation";
 import { Reviews1 } from "@/components/reviews1";
 import * as fbq from "@/lib/fb-pixel";
+import { t } from "@/lib/i18n";
 
 type Props = { product: Product; relatedProducts: Product[] };
 
@@ -57,7 +58,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
   if (!product) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        Product not found
+        {t("common.productNotFound")}
       </div>
     );
   }
@@ -117,7 +118,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
           {/* Color Selection */}
           {product.colors && (
             <div>
-              <h3 className="mb-3 font-semibold text-gray-900">Color</h3>
+              <h3 className="mb-3 font-semibold text-gray-900">{t("products.color")}</h3>
               <div className="flex space-x-3">
                 {product.colors.map((color) => (
                   <button
@@ -137,7 +138,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
 
           {/* Quantity */}
           <div>
-            <h3 className="mb-3 font-semibold text-gray-900">Quantity</h3>
+            <h3 className="mb-3 font-semibold text-gray-900">{t("products.quantity")}</h3>
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -156,7 +157,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
           {/* Action Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button onClick={handleAddToCart} className="flex-1" size="lg">
-              Buy
+              {t("common.buy")}
             </Button>
           </div>
 
@@ -165,7 +166,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
           {/* Features */}
           {product.features && (
             <div className="border-t pt-6">
-              <h3 className="mb-3 font-semibold text-gray-900">Key Features</h3>
+              <h3 className="mb-3 font-semibold text-gray-900">{t("products.keyFeatures")}</h3>
               <ul className="space-y-2">
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-center space-x-2">
@@ -182,7 +183,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
       {/* Related Products */}
       {relatedProducts.length > 0 && (
         <div className="mt-16">
-          <h2 className="mb-8 text-2xl font-bold text-gray-900">Related Products</h2>
+          <h2 className="mb-8 text-2xl font-bold text-gray-900">{t("products.relatedProducts")}</h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />

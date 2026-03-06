@@ -8,10 +8,10 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
-            What Our Customers Say
+            ماذا يقول عملاؤنا
           </h2>
           <p className="text-lg text-gray-600">
-            Don&#39;t just take our word for it - hear from our satisfied customers
+            لا تاخذ بكلامنا - اسمع من عملائنا satisfaits
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export default function Testimonials() {
                   alt={testimonial.name}
                   width={48}
                   height={48}
-                  className="mr-4 h-12 w-12 rounded-full"
+                  className="ml-4 h-12 w-12 rounded-full"
                 />
                 <div>
                   <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>

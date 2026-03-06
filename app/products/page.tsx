@@ -39,15 +39,15 @@ export default function ProductsPage() {
               variant="outline"
               onClick={() => setShowFilters(!showFilters)}
               className="w-full">
-              <Filter className="mr-2 h-4 w-4" />
-              Filters
+              <Filter className="ml-2 h-4 w-4" />
+              الفلاتر
             </Button>
           </div>
 
           <div className={`space-y-6 ${showFilters ? "block" : "hidden lg:block"}`}>
             {/* Category Filter */}
             <div>
-              <h3 className="mb-3 text-xs tracking-widest uppercase">Category</h3>
+              <h3 className="mb-3 text-xs tracking-widest uppercase">الفئة</h3>
               <div className="space-y-2">
                 {["all", "AI", "Editing", "Design"].map((category) => (
                   <label key={category} className="flex items-center">
@@ -57,10 +57,10 @@ export default function ProductsPage() {
                       value={category}
                       checked={selectedCategory === category}
                       onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="mr-2"
+                      className="ml-2"
                     />
                     <span className="capitalize">
-                      {category === "all" ? "All Products" : category}
+                      {category === "all" ? "جميع المنتجات" : category}
                     </span>
                   </label>
                 ))}
@@ -69,13 +69,13 @@ export default function ProductsPage() {
 
             {/* Price Filter */}
             <div>
-              <h3 className="mb-3 text-xs tracking-widest uppercase">Price Range</h3>
+              <h3 className="mb-3 text-xs tracking-widest uppercase">نطاق السعر</h3>
               <div className="space-y-2">
                 {[
-                  { value: "all", label: "All Prices" },
-                  { value: "under-1000", label: "Under 1000 DA" },
-                  { value: "1000-2000", label: "1000 DA - 2000 DA" },
-                  { value: "over-2000", label: "Over 2000 DA" }
+                  { value: "all", label: "جميع الأسعار" },
+                  { value: "under-1000", label: "أقل من 1000 دينار" },
+                  { value: "1000-2000", label: "1000 - 2000 دينار" },
+                  { value: "over-2000", label: "أكثر من 2000 دينار" }
                 ].map((option) => (
                   <label key={option.value} className="flex items-center">
                     <input
@@ -84,7 +84,7 @@ export default function ProductsPage() {
                       value={option.value}
                       checked={priceRange === option.value}
                       onChange={(e) => setPriceRange(e.target.value)}
-                      className="mr-2"
+                      className="ml-2"
                     />
                     <span>{option.label}</span>
                   </label>
@@ -98,7 +98,7 @@ export default function ProductsPage() {
         <div className="flex-1">
           <div className="mb-6 flex items-center justify-between">
             <h1 className="text-2xl font-bold text-gray-900">
-              Products ({filteredProducts.length})
+              المنتجات ({filteredProducts.length})
             </h1>
 
             <div className="relative">
@@ -106,13 +106,13 @@ export default function ProductsPage() {
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="focus:ring-primary appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-8 focus:border-transparent focus:ring-2">
-                <option value="featured">Featured</option>
-                <option value="newest">Newest</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
+                <option value="featured">المميزة</option>
+                <option value="newest">الأحدث</option>
+                <option value="price-low">السعر: من الأقل للأعلى</option>
+                <option value="price-high">السعر: من الأعلى للأقل</option>
+                <option value="rating">الأعلى تقييماً</option>
               </select>
-              <ChevronDown className="pointer-events-none absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
+              <ChevronDown className="pointer-events-none absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
             </div>
           </div>
 
@@ -124,7 +124,7 @@ export default function ProductsPage() {
 
           {filteredProducts.length === 0 && (
             <div className="py-12 text-center">
-              <p className="text-gray-500">No products found matching your criteria.</p>
+              <p className="text-gray-500">لم يتم العثور على منتجات مطابقة.</p>
             </div>
           )}
         </div>

@@ -240,3 +240,84 @@
     @apply cursor-pointer!
   }
 }
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  /* Flip margin utilities */
+  .ms-2 { margin-inline-start: 0.5rem; }
+  .me-2 { margin-inline-end: 0.5rem; }
+  .ms-4 { margin-inline-start: 1rem; }
+  .me-4 { margin-inline-end: 1rem; }
+  .ms-3 { margin-inline-start: 0.75rem; }
+  .me-3 { margin-inline-end: 0.75rem; }
+  
+  /* Flip space utilities */
+  .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+  .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+  .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+  .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+  
+  /* Gap utilities for RTL */
+  [dir="rtl"] .gap-4 {
+    gap: 1rem;
+  }
+  [dir="rtl"] .gap-12 {
+    gap: 3rem;
+  }
+  
+  /* Text alignment */
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+  
+  /* Flex utilities */
+  [dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+  }
+  
+  /* Border utilities */
+  [dir="rtl"] .border-r {
+    border-right-width: 1px;
+    border-left-width: 0;
+  }
+  [dir="rtl"] .border-l {
+    border-left-width: 1px;
+    border-right-width: 0;
+  }
+  
+  /* Border-t for top border */
+  [dir="rtl"] .border-t {
+    border-top-width: 1px;
+    border-bottom-width: 0;
+  }
+  
+  /* Rounded utilities */
+  [dir="rtl"] .rounded-l-lg {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+  [dir="rtl"] .rounded-r-lg {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+  
+  /* Product detail page specific */
+  [dir="rtl"] .flex-1 {
+    flex: 1 1 0%;
+  }
+}

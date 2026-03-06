@@ -38,7 +38,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       >
         <h3
           className={cn(
-            'text-left text-base font-medium transition-colors duration-200',
+            'text-right text-base font-medium transition-colors duration-200',
             'text-foreground/80',
             isOpen && 'text-foreground',
           )}
@@ -120,22 +120,22 @@ export default function Faq3() {
   const router = useRouter();
   const faqs: Omit<FAQItemProps, 'index'>[] = [
     {
-      question: 'How to get your subscription after payment?',
+      question: 'كيف الحصول على اشتراكك بعد الدفع؟',
       answer:
-        "💳 After completing the payment process, a page will appear with our WhatsApp number.\n📲 Please message us immediately on WhatsApp, and we will activate your subscription directly and quickly via your email.\n⚡ Activation is instant and guaranteed!",
+        "بعد إكمال عملية الدفع، قم بارسال وصل الدفع عن الى الايمايل الخاص بنا. وسنقوم بتفعيل اشتراكك مباشرة وبسرعة عبر بريدك الإلكتروني. التفعيل فوري ومضمون!",
     },
     {
-      question: 'What if I encounter a problem with my subscription later on?',
+      question: 'ماذا لو واجهت مشكلة في اشتراكك لاحقاً؟',
       answer:
-        "✅ We offer a full guarantee throughout the subscription period.",
+        "نحن نقدم ضماناً كاملاً طوال فترة الاشتراك.",
     },
   ];
 
   return (
     <section className="bg-background relative w-full overflow-hidden py-16">
       {/* Decorative elements */}
-      <div className="bg-primary/5 absolute top-20 -left-20 h-64 w-64 rounded-full blur-3xl" />
-      <div className="bg-primary/5 absolute -right-20 bottom-20 h-64 w-64 rounded-full blur-3xl" />
+      <div className="bg-primary/5 absolute top-20 -right-20 h-64 w-64 rounded-full blur-3xl" />
+      <div className="bg-primary/5 absolute -left-20 bottom-20 h-64 w-64 rounded-full blur-3xl" />
 
       <div className="relative container mx-auto max-w-6xl px-4">
         <motion.div
@@ -148,11 +148,11 @@ export default function Faq3() {
             variant="outline"
             className="border-primary mb-4 px-3 py-1 text-xs font-medium tracking-wider uppercase"
           >
-            FAQs
+            الأسئلة الشائعة
           </Badge>
 
           <h2 className="from-primary mb-3 bg-gradient-to-r to-rose-400 bg-clip-text text-3xl font-bold text-transparent">
-            Frequently Asked Questions
+            الأسئلة الشائعة
           </h2>
         </motion.div>
 
@@ -172,10 +172,10 @@ export default function Faq3() {
             <Mail className="h-4 w-4" />
           </div>
           <p className="text-foreground mb-1 text-sm font-medium">
-            Still have questions?
+            لا تزال لديك أسئلة؟
           </p>
           <p className="text-muted-foreground mb-4 text-xs">
-            We&apos;re here to help you
+            نحن هنا لمساعدتك
           </p>
           <button
             type="button"
@@ -188,7 +188,7 @@ export default function Faq3() {
               'font-medium',
             )}
           >
-            Contact Support
+            تواصل مع الدعم
           </button>
         </motion.div>
       </div>

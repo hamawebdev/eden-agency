@@ -78,9 +78,7 @@ export const ContactSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().optional(),
-  subject: z.string().min(1, "Subject is required"),
   message: z.string().min(10, "Message must be at least 10 characters"),
-  orderNumber: z.string().optional(),
 })
 
 // Infer types from schemas

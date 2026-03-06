@@ -9,10 +9,9 @@ export default function FeaturedProducts() {
     <section className="bg-white py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Featured Products</h2>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">المنتجات المميزة</h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
-            Discover our most popular items, carefully selected for their exceptional quality and
-            customer satisfaction.
+            اكتشف منتجاتنا الاكثر شعبية، المنتقاة بعناية لجودتها الاستثنائية ورضا العملاء.
           </p>
         </div>
 

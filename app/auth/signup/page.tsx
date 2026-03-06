@@ -22,11 +22,11 @@ export default function SignUpPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">Create your account</h2>
+          <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">إنشاء حسابك</h2>
           <p className="text-muted-foreground mt-2 text-center text-sm">
-            Or{" "}
+            أو{" "}
             <Link href="/auth/signin" className="text-primary hover:text-primary/80 font-medium">
-              sign in to your existing account
+              تسجيل الدخول إلى حسابك الحالي
             </Link>
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function SignUpPage() {
               <div>
                 <Input
                   type="text"
-                  placeholder="First name"
+                  placeholder="الاسم الأول"
                   value={data.firstName || ""}
                   onChange={(e) => setValue("firstName", e.target.value)}
                   className={errors.firstName ? "border-red-500" : ""}
@@ -55,7 +55,7 @@ export default function SignUpPage() {
               <div>
                 <Input
                   type="text"
-                  placeholder="Last name"
+                  placeholder="اسم العائلة"
                   value={data.lastName || ""}
                   onChange={(e) => setValue("lastName", e.target.value)}
                   className={errors.lastName ? "border-red-500" : ""}
@@ -67,7 +67,7 @@ export default function SignUpPage() {
             <div>
               <Input
                 type="email"
-                placeholder="Email address"
+                placeholder="البريد الإلكتروني"
                 value={data.email || ""}
                 onChange={(e) => setValue("email", e.target.value)}
                 className={errors.email ? "border-red-500" : ""}
@@ -78,7 +78,7 @@ export default function SignUpPage() {
             <div>
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder="كلمة المرور"
                 value={data.password || ""}
                 onChange={(e) => setValue("password", e.target.value)}
                 className={errors.password ? "border-red-500" : ""}
@@ -89,7 +89,7 @@ export default function SignUpPage() {
             <div>
               <Input
                 type="password"
-                placeholder="Confirm password"
+                placeholder="تأكيد كلمة المرور"
                 value={data.confirmPassword || ""}
                 onChange={(e) => setValue("confirmPassword", e.target.value)}
                 className={errors.confirmPassword ? "border-red-500" : ""}
@@ -108,16 +108,16 @@ export default function SignUpPage() {
               required
               className="text-primary focus:ring-primary h-4 w-4 rounded border-gray-300"
             />
-            <label htmlFor="agree-terms" className="ml-2 block text-sm text-gray-900">
-              I agree to the{" "}
+            <label htmlFor="agree-terms" className="mr-2 block text-sm text-gray-900">
+              أوافق على{" "}
               <Link href="/terms" className="text-primary hover:text-primary/80">
-                Terms and Conditions
+                الشروط والأحكام
               </Link>
             </label>
           </div>
 
           <Button type="submit" className="w-full" size="lg" disabled={isSubmitting || isLoading}>
-            {isSubmitting || isLoading ? "Creating account..." : "Create account"}
+            {isSubmitting || isLoading ? "جاري إنشاء الحساب..." : "إنشاء حساب"}
           </Button>
         </form>
       </div>
