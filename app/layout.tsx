@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FrontextInit } from "@/components/frontext-init";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
@@ -46,7 +45,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navbar />
-        <FrontextInit />
         <Suspense fallback={null}>
           <FacebookPixel paramBuilderScriptUrl={metaParamBuilderScriptUrl} />
         </Suspense>

@@ -171,7 +171,7 @@ export default function ProductDetailPage({ product, relatedProducts }: Props) {
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-center space-x-2">
                     <div className="bg-primary h-2 w-2 rounded-full" />
-                    <span className="text-muted-foreground">{feature}</span>
+                    <span className="text-muted-foreground font-bold">{feature}</span>
                   </li>
                 ))}
               </ul>
